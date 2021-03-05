@@ -10,30 +10,26 @@
 
     <Button
         android:id="@+id/btnServe"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="255dp"
-        android:layout_height="171dp"
-        android:layout_marginEnd="80dp"
-        android:background="#553E3E"
+        android:layout_width="400dp"
+        android:layout_height="300dp"
+        android:layout_marginEnd="150dp"
+        android:onClick="goServe"
         android:rotationY="-4"
         android:text="Serve"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:onClick="onServe"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnOrder"
-        style="@style/Widget.MaterialComponents.Button"
-        android:layout_width="255dp"
-        android:layout_height="171dp"
-        android:layout_marginStart="80dp"
+        android:layout_width="400dp"
+        android:layout_height="300dp"
+        android:layout_marginStart="150dp"
+        android:onClick="goOrder"
         android:rotationY="4"
         android:text="Get Order"
-        app:iconTint="#89B17E"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:onClick="onOrder"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

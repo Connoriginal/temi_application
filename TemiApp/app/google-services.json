@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "6664824700",
+    "project_id": "temiapplication",
+    "storage_bucket": "temiapplication.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:6664824700:android:5a3f24c704860833d466f9",
+        "android_client_info": {
+          "package_name": "com.example.temiapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "6664824700-qphdagiahkqddv025sj4sqgi7sifuq2k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpQBFwWvngp7A0TBV7Vo6K1_Fx-Kk7mfM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "6664824700-qphdagiahkqddv025sj4sqgi7sifuq2k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

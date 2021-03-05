@@ -13,12 +13,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/SkillTheme">
-
         <!-- Adding this meta-data is required in order to display this app in temi's launcher app -->
         <meta-data
             android:name="com.robotemi.sdk.metadata.SKILL"
             android:value="@string/app_name" />
-
 
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -27,9 +25,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".OrderActivity"></activity>
-        <activity android:name=".ServeActivity"></activity>
+        <activity android:name=".OrderActivity" />
+        <activity android:name=".ServeActivity" />
+        <activity android:name=".MenuActivity"/>
     </application>
 
 </manifest>

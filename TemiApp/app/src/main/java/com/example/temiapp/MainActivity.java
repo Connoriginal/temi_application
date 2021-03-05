@@ -2,11 +2,14 @@ package com.example.temiapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 import com.example.temiapp.temi.RoboTemiListener;
 import com.robotemi.sdk.listeners.OnRobotReadyListener;
@@ -14,11 +17,19 @@ import com.robotemi.sdk.listeners.OnRobotReadyListener;
 public class MainActivity extends AppCompatActivity implements OnRobotReadyListener {
 
     RoboTemiListener listener;
+    Button btnOrder, btnServe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        btnOrder = (Button)findViewById(R.id.btnOrder);
+        btnServe = (Button)findViewById(R.id.btnServe);
+
+        //버튼 애니메이션 추가
+        btnOrder.animate().alpha(1f).setDuration(1000);
+        btnServe.animate().alpha(1f).setDuration(1000);
 
 
     }
@@ -52,15 +63,16 @@ public class MainActivity extends AppCompatActivity implements OnRobotReadyListe
         }
     }
 
-    public void onOrder(View v){
+    public void goOrder(View v){
         listener.stop();// 예제 리스너 추가를 위해서 Main activity의 적용된 리스너 모두 제거
         Intent intent = new Intent(getApplicationContext(),OrderActivity.class);
         //intent.putExtra("data", "data");
         startActivity(intent);
         //startActivityForResult(intent,0);
+        finish();
     }
     
-    public void onServe(View v){
+    public void goServe(View v){
         listener.stop();
         Intent intent = new Intent(getApplicationContext(),ServeActivity.class);
         startActivity(intent);

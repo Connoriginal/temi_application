@@ -37,6 +37,8 @@ public class ServeActivity extends AppCompatActivity implements OnRobotReadyList
         OnLoadMapStatusChangedListener {
 
     RoboTemiListener listener;
+    Button btnServe1, btnServe2;
+    LinearLayout llServe1, llServe2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,25 +56,50 @@ public class ServeActivity extends AppCompatActivity implements OnRobotReadyList
         listener.getRobot().addOnRobotReadyListener(this);
         listener.getRobot().addOnGoToLocationStatusChangedListener(this);
 
-        LinearLayout linearLayout = (LinearLayout)findViewById(R.id.serveLayout);
-        List<String> locationList = listener.getRobot().getLocations();
+        btnServe1 = (Button)findViewById(R.id.btnServe1);
+        btnServe2 = (Button)findViewById(R.id.btnServe2);
+        llServe1 = (LinearLayout)findViewById(R.id.serveLayout1);
+        llServe2 = (LinearLayout)findViewById(R.id.serveLayout2);
 
-        ArrayList<Button> buttons = new ArrayList<>();
+        btnServe1.setOnClickListener(new Button.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                listener.goTo("1번");
+                llServe1.removeAllViews();
+            }
+        });
+
+        btnServe2.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.goTo("2번");
+                llServe2.removeAllViews();
+            }
+        });
+
+        /* ** linearlayout에 button을 코드로 집어넣는 방법
+
+        LinearLayout linearLayout = (LinearLayout)findViewById(R.id.serveLayout);
+        //location 받아오기
+        List<String> locationList = listener.getRobot().getLocations();
 
         for(String str : locationList){
             if(str.equals("home base")) continue;
             Button button = new Button(this);
             button.setText(str);
             button.setTag(str);
+            button.setHeight(600);
+            button.setPadding(10,10,10,10);
             button.setOnClickListener(new Button.OnClickListener(){
                 @Override
                 public void onClick(View view) {
                     listener.goTo(str);
                 }
             });
-            buttons.add(button);
             linearLayout.addView(button);
         }
+         ** */
+
     }
 
     @Override
@@ -84,7 +111,7 @@ public class ServeActivity extends AppCompatActivity implements OnRobotReadyList
 
     public void onServe(){
         listener.speak("주문하신 음료가 나왔습니다\n 가져가신 후에 돌아가기 버튼을 눌러주세요");
-        LinearLayout linearLayout = (LinearLayout)findViewById(R.id.serveLayout);
+        LinearLayout linearLayout = (LinearLayout)findViewById(R.id.serveLayout1);
         linearLayout.removeAllViews(); // view 초기화
 
         Button button = new Button(this);
@@ -124,19 +151,19 @@ public class ServeActivity extends AppCompatActivity implements OnRobotReadyList
         listener.speak(description);
         switch (status) {
             case OnGoToLocationStatusChangedListener.START:
-                listener.speak("Starting");
+                listener.speak(location + "테이블로 이동합니다.");
                 break;
 
             case OnGoToLocationStatusChangedListener.CALCULATING:
-                listener.speak("Calculating");
+                listener.speak("탐색 중");
                 break;
 
             case OnGoToLocationStatusChangedListener.GOING:
-                listener.speak("GOING");
+                listener.speak("이동합니다");
                 break;
 
             case OnGoToLocationStatusChangedListener.COMPLETE:
-                listener.speak("COMPLETE");
+                listener.speak("도착했습니다.");
                 if(location.equals("home base")) goToMain();
                 else onServe();
                 break;

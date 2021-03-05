@@ -28,14 +28,10 @@ import java.util.List;
 import java.util.Map;
 
 public class OrderActivity extends AppCompatActivity implements OnRobotReadyListener,
-        OnLocationsUpdatedListener,
-        OnGoToLocationStatusChangedListener,
-        OnDistanceToLocationChangedListener,
-        OnCurrentPositionChangedListener,
-        OnReposeStatusChangedListener,
-        OnLoadMapStatusChangedListener {
+        OnGoToLocationStatusChangedListener {
 
     RoboTemiListener listener;
+    Button btnOrderTable1, btnOrderTable2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,10 +49,27 @@ public class OrderActivity extends AppCompatActivity implements OnRobotReadyList
         listener.getRobot().addOnRobotReadyListener(this);
         listener.getRobot().addOnGoToLocationStatusChangedListener(this);
 
-        LinearLayout linearLayout = (LinearLayout)findViewById(R.id.serveLayout);
+        btnOrderTable1 = (Button)findViewById(R.id.btnOrderTable1);
+        btnOrderTable2 = (Button)findViewById(R.id.btnOrderTable2);
+
+        btnOrderTable1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.goTo("1번");
+            }
+        });
+
+        btnOrderTable2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.goTo("2번");
+            }
+        });
+
+
+        /*
         List<String> locationList = listener.getRobot().getLocations();
 
-        ArrayList<Button> buttons = new ArrayList<>();
 
         for(String str : locationList){
             if(str.equals("home base")) continue;
@@ -69,10 +82,9 @@ public class OrderActivity extends AppCompatActivity implements OnRobotReadyList
                     listener.goTo(str);
                 }
             });
-            buttons.add(button);
-            linearLayout.addView(button);
-        }
 
+        }
+        */
     }
 
     @Override
@@ -88,7 +100,6 @@ public class OrderActivity extends AppCompatActivity implements OnRobotReadyList
         listener.stop();
         finish();
     }
-
 
     @Override
     public void onRobotReady(boolean isReady) {
@@ -108,50 +119,30 @@ public class OrderActivity extends AppCompatActivity implements OnRobotReadyList
         listener.speak(description);
         switch (status) {
             case OnGoToLocationStatusChangedListener.START:
-                listener.speak("Starting");
+                listener.speak(location +" 테이블로 이동하겠습니다");
                 break;
 
             case OnGoToLocationStatusChangedListener.CALCULATING:
-                listener.speak("Calculating");
                 break;
 
             case OnGoToLocationStatusChangedListener.GOING:
-                listener.speak("GOING");
+                listener.speak("이동중입니다");
                 break;
 
             case OnGoToLocationStatusChangedListener.COMPLETE:
-                listener.speak("COMPLETE");
+                listener.speak("도착했습니다.");
                 if(location.equals("home base")) goToMain();
+                else {
+                    Intent intent = new Intent(getApplicationContext(),OrderActivity.class);
+                    intent.putExtra("location",location);
+                    startActivity(intent);
+                    finish();
+                }
                 break;
 
             case OnGoToLocationStatusChangedListener.ABORT:
                 listener.speak("ABORT");
                 break;
         }
-    }
-
-    @Override
-    public void onLocationsUpdated(@NotNull List<String> list) {
-
-    }
-
-    @Override
-    public void onLoadMapStatusChanged(int i) {
-
-    }
-
-    @Override
-    public void onCurrentPositionChanged(@NotNull Position position) {
-
-    }
-
-    @Override
-    public void onDistanceToLocationChanged(@NotNull Map<String, Float> map) {
-
-    }
-
-    @Override
-    public void onReposeStatusChanged(int i, @NotNull String s) {
-
     }
 }

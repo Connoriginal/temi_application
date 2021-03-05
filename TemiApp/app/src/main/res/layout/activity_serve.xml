@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/serveMainLayout"
@@ -9,11 +9,81 @@
     tools:context=".ServeActivity">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/serveLayout"
-        android:layout_alignParentBottom="true"
+        android:id="@+id/serveLayout1"
+        android:layout_width="587dp"
+        android:layout_height="500dp"
         android:layout_gravity="bottom"
-        android:orientation="horizontal">
+        android:layout_marginStart="30dp"
+        android:background="#BDA6A6"
+        android:orientation="vertical"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
     </LinearLayout>
-</RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/serveLayout2"
+        android:layout_width="587dp"
+        android:layout_height="500dp"
+        android:layout_gravity="bottom"
+        android:layout_marginEnd="30dp"
+        android:background="#BDA6A6"
+        android:orientation="vertical"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnServe1"
+        android:layout_width="587dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_weight="1"
+        android:text="@string/button_serve"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/serveLayout1" />
+
+    <TextView
+        android:id="@+id/table1"
+        android:layout_width="587dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="30dp"
+        android:layout_weight="1"
+        android:background="#886969"
+        android:backgroundTint="#735959"
+        android:gravity="center"
+        android:text="@string/table_name1"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+        app:layout_constraintBottom_toTopOf="@+id/serveLayout1"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnServe2"
+        android:layout_width="587dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:layout_weight="1"
+        android:text="@string/button_serve"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/serveLayout2" />
+
+    <TextView
+        android:id="@+id/table2"
+        android:layout_width="587dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="30dp"
+        android:layout_weight="1"
+        android:background="#886969"
+        android:backgroundTint="#735959"
+        android:gravity="center"
+        android:text="@string/table_name2"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+        app:layout_constraintBottom_toTopOf="@+id/serveLayout2"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
