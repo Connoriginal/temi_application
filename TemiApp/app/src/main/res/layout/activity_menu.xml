@@ -12,14 +12,15 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="10dp"
         android:background="#8D634F"
         app:layout_constraintBottom_toTopOf="@+id/layoutForSelect"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_weight="7">
 
         <ListView
             android:id="@+id/listviewForMenu"
@@ -34,14 +35,17 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layoutForSelect"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="0dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="30dp"
         android:background="#79503E"
         app:layout_constraintBottom_toTopOf="@+id/btDone"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutForMenu"
+        app:layout_constraintVertical_weight="3">
 
         <ListView
             android:id="@+id/listviewForSelect"
