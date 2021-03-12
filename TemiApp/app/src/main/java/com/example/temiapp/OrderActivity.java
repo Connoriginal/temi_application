@@ -133,7 +133,7 @@ public class OrderActivity extends AppCompatActivity implements OnRobotReadyList
                 listener.speak("도착했습니다.");
                 if(location.equals("home base")) goToMain();
                 else {
-                    Intent intent = new Intent(getApplicationContext(),OrderActivity.class);
+                    Intent intent = new Intent(getApplicationContext(),MenuActivity.class);
                     intent.putExtra("location",location);
                     startActivity(intent);
                     finish();
