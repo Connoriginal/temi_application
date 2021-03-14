@@ -9,15 +9,15 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layoutForMenu"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="20dp"
         android:background="#8D634F"
-        app:layout_constraintBottom_toTopOf="@+id/layoutForSelect"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btDone"
+        app:layout_constraintEnd_toStartOf="@+id/layoutForSelect"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_weight="7">
@@ -32,20 +32,29 @@
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:id="@+id/layoutForSelect"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="20dp"
         android:background="#79503E"
         app:layout_constraintBottom_toTopOf="@+id/btDone"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layoutForMenu"
+        app:layout_constraintStart_toEndOf="@+id/layoutForMenu"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_weight="3">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="주문현황"
+            android:textColor="@color/white" />
 
         <ListView
             android:id="@+id/listviewForSelect"
@@ -55,7 +64,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
     <Button
         android:id="@+id/btDone"
